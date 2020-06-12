@@ -2,12 +2,7 @@
 
 @section('content')
 <div class="container">
-<div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header"> <strong> Input Penjualan </strong> </div>
-                <div class="card-body">
-                @if(count($errors) > 0)
+                    @if(count($errors) > 0)
                         <div class="alert alert-danger"> 
                             <ul>
                             @foreach($errors->all() as $error)
@@ -16,6 +11,17 @@
                             </ul>
                             </div>
                     @endif
+                    @if(\Session::has('Forbidden'))
+                        <div class="alert alert-danger">
+                            <p>{{\Session::get('Forbidden')}}</p>
+                        </div>
+                    @endif
+<div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> <strong> Input Record Penjualan </strong> </div>
+                <div class="card-body">
+               
                 <form method="post" action="{{route('tambah')}}">
                 @csrf
                     <label> Tanggal </label>
@@ -58,13 +64,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="card">
-                  
+            <div class="card-header"> <strong> Tabel Record Penjualan </strong> </div>
+            <div class="card-body">
                             <table class="table table-hover" align="center">
                             <tr>
                                 <th> NO </th>
-                                <th> ID </th>
                                 <th> Tanggal </th>
                                 <th> Batas Bayar </th>
                                 <th> Nilai (RP) </th>
@@ -74,7 +80,6 @@
                             @foreach($dtjl as $row)
                                 <tr>
                                     <td> {{$loop->iteration}} </td>
-                                    <td> {{$row['id']}} </td>
                                     <td> {{$row['tgl']}} </td>
                                     <td> {{$row['btsbayar']}} </td>
                                     <td> {{$row['jumlah']}} </td>
@@ -83,40 +88,29 @@
                                 </tr>
                             @endforeach
                             </table>
-                            <button type="submit" class="btn btn-primary">Proses Data</button>
+                            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('ProsesJ') }}"> Proses data </a> </button>
             </div>
         </div>
-
-
       </div>
   </div>
   <br>
-  <div class="container">
   <div class="row justify-content-left">
-  <div class="col-md-6">
+  <div class="col-md-4">
             <div class="card">
                 <div class="card-header"> <strong> Input Bayar </strong> </div>
                 <div class="card-body">
-                @if(count($errors) > 0)
-                        <div class="alert alert-danger"> 
-                            <ul>
-                            @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
-                            </ul>
-                            </div>
-                    @endif
-                <form method="post" action="{{route('tambah')}}">
+                
+                <form method="post" action="{{route('tambahP')}}">
                 @csrf
                     <label> Tanggal </label>
                     <div class="form-group">
                         <input type="date" name="Tanggal" class="form-control" value=<?php echo date("Y-m-d") ?>> 
                     </div>
                     <div class="form-group">
-                      <label> ID kredit yang akan dilunasi </label>
+                      <label> kredit yang akan dilunasi </label>
                       <select name ="jenis" class="custom-select">
                       @foreach($dtjlkredit as $row1)
-                      <option value="Pelunasan piutang : {{$row1['id']}}">{{$row1['id']}}</option>
+                      <option value="{{$row1['id']}}">{{$row1['tgl']}}</option>
                       @endforeach
                       </select>
                     </div>
@@ -138,6 +132,6 @@
                 </div>
             </div>
         </div>
-        </div>
+        
     </div>
   @endsection

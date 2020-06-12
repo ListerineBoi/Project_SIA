@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('input');
+    return redirect()->route('home');
 });
-
+Route::get('/home','HomeController@index')->name('home');
 Route::get('/input','inputController@index')->name('input');
-Route::post('/input/submit','inputController@tambah')->name('tambah');
+Route::post('/input/jual','inputController@tambah')->name('tambah'); 
+Route::post('/input/byrpiutang','inputController@tambahP')->name('tambahP'); 
+
+Route::get('/jurnal','jurnalController@jurnal')->name('jurnal');
+Route::get('/jurnal/proses','jurnalController@proses')->name('ProsesJ');
+
+Route::get('/posting','postingController@posting')->name('posting');
+Route::get('/posting/proses','postingController@proses')->name('ProsesP');
