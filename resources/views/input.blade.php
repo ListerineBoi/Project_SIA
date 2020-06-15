@@ -30,6 +30,11 @@
                     </div>
 
                     <div class="form-group">
+                    <label> Customer </label>
+                    <input type="text" class="form-control" name="cust">
+                    </div>
+
+                    <div class="form-group">
                     <label> Jumlah </label>
                     <input type="number" class="form-control" name="Jumlah">
                     </div>
@@ -43,13 +48,16 @@
                     </div>
 
                     <div class="form-group">
-                      <label> Batas Pembayaran </label>
-                      <select name ="Batas" class="custom-select">
-                      <option value="-">-</option>
-                      <option value="2/10">2/10</option>
-                      <option value="5/15">5/15</option>
-                      <option value="n/30">n/30</option>
-                      </select>
+                    <label> Batas Pembayaran </label>
+                        <div class="row">
+                            <div class="col">
+                                <input type="number" class="form-control" name="perc" placeholder="ex:2">
+                            </div>
+                            <label> / </label>
+                            <div class="col">
+                                <input type="number" class="form-control" name="hari" placeholder="ex:20">
+                            </div>
+                        </div>
                     </div>
 
                       <div class="form-group">
@@ -72,6 +80,7 @@
                             <tr>
                                 <th> NO </th>
                                 <th> Tanggal </th>
+                                <th> Cust </th>
                                 <th> Batas Bayar </th>
                                 <th> Nilai (RP) </th>
                                 <th> Jenis Penjualan </th>
@@ -81,7 +90,8 @@
                                 <tr>
                                     <td> {{$loop->iteration}} </td>
                                     <td> {{$row['tgl']}} </td>
-                                    <td> {{$row['btsbayar']}} </td>
+                                    <td> {{$row['cust']}} </td>
+                                    <td> {{$row['perc']}}/{{$row['hari']}} </td>
                                     <td> {{$row['jumlah']}} </td>
                                     <td> {{$row['jns_pjln']}} </td>
                                     <td> {{$row['desc']}} </td>
@@ -119,13 +129,7 @@
                         <label> Jumlah </label>
                         <input type="number" class="form-control" name="Jumlah">
                     </div>
-
-                      <div class="form-group">
-                          <label> Deskripsi </label>
-                          <textarea class="form-control" name="desc" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
-                      </div>
-                      
-                      
+                                            
                         <button type="submit" class="btn btn-primary">Submit</button>
 
                     </form>

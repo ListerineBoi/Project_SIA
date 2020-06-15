@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DtJual extends Migration
+class Piutang extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class DtJual extends Migration
      */
     public function up()
     {
-        Schema::create('dt_jual', function (Blueprint $table) {
+        Schema::create('piutang', function (Blueprint $table) {
             $table->id();
-            $table->date('tgl');
             $table->string('cust');
-            $table->bigInteger('jumlah');
-            $table->string('jns_pjln');
-            $table->bigInteger('perc')->nullable();
-            $table->bigInteger('hari')->nullable();
-            $table->string('desc');
+            $table->bigInteger('total');
+            $table->bigInteger('nyd')->nullable();
+            $table->bigInteger('<30')->nullable();
+            $table->bigInteger('31-60')->nullable();
+            $table->bigInteger('61-90')->nullable();
+            $table->bigInteger('>90')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class DtJual extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dt_jual');
+        Schema::dropIfExists('piutang');
     }
 }

@@ -20,6 +20,7 @@
         <div class="col-md-8">
             <div class="card">
             <div class="card-header"> <strong> Tabel Record Penjualan </strong> </div>
+            <div class="card-body">
                             <table class="table table-hover" align="center">
                             <tr>
                                 <th> Tanggal </th>
@@ -52,7 +53,7 @@
                             </table>
             </div>
         </div>
-
+        </div>
 
       </div>
   </div>

@@ -59,13 +59,6 @@ class jurnalController extends Controller
                     $penj->save();
                 break;
                 default:
-                $kas= new jurnal([
-                    'tgl' => $row['tgl'],
-                    'id_data' => $row['id'],
-                    'ket' => 'Kas',
-                    'debit' =>  $row['jumlah']
-                ]);
-                $kas->save();
                 $piutg= new jurnal([
                     'tgl' => $row['tgl'],
                     'id_data' => $row['id'],
@@ -73,6 +66,15 @@ class jurnalController extends Controller
                     'kredit' =>  $row['jumlah']
                 ]);
                 $piutg->save();
+                //$validis=$row['jumlah']==
+                $kas= new jurnal([
+                    'tgl' => $row['tgl'],
+                    'id_data' => $row['id'],
+                    'ket' => 'Kas',
+                    'debit' =>  $row['jumlah']
+                ]);
+                $kas->save();
+                
             } 
         }
         return redirect()->route('jurnal');

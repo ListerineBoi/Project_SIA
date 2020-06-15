@@ -26,3 +26,6 @@ Route::get('/jurnal/proses','jurnalController@proses')->name('ProsesJ');
 
 Route::get('/posting','postingController@posting')->name('posting');
 Route::get('/posting/proses','postingController@proses')->name('ProsesP');
+
+Route::get('/piutang','piutangController@index')->name('piutang');
+Route::get('/piutang/proses','piutangController@piutang')->name('ProsesPi');
